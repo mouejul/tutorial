@@ -1,25 +1,16 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Event struct {
-	Id          int
-	Name        string `binding:"required"`
-	Description string `binding:"required"`
-	Location    string `binding:"required"`
-	DatTime     time.Time
-	UserId      int
-}
-
-// variabel penyimpanan data
-var events []Event = []Event{}
-
-// fungsi unutk simpan Event
-func (e Event) Save(){
-	events = append(events,e)
-}
-
-// fungsi menampilkan semua event
-func GetAllEvents() []Event {
-	return events
+	gorm.Model
+	Name        string    `json:"name" binding:"required"`
+	Description string    `json:"description" binding:"required"`
+	Location    string    `json:"location" binding:"required"`
+	UserID      int       `json:"userid"`
+	Datetime    time.Time `json:"datetime" binding:"required"`
 }
