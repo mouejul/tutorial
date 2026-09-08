@@ -24,6 +24,10 @@ func main() {
 	{
 		api.POST("/events", controllers.CreateEvent)
 		api.GET("/events", controllers.GetEvents)
+		api.GET("/events/:id", controllers.GetEventbyId)
+		api.PUT("/events/:id", controllers.UpdateEvent)
+		api.DELETE("/events/:id", controllers.DeleteEvent)
+
 	}
 
 	server.Run(":8080")
